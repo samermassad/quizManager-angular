@@ -1,5 +1,9 @@
 <div class="container">
 
+<div class="alert alert-danger" *ngIf="error">
+  Wrong username or password!
+</div>
+
       <form class="form-signin" #loginForm="ngForm">
       
         <h2 class="form-signin-heading">Please sign in</h2>

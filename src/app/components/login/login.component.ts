@@ -1,4 +1,5 @@
 import {Login} from '../../datamodel/login';
+import { SuccessResponse } from '../../datamodel/successresponse';
 import { LoginService } from '../../services/login.service';
 import {TestloginService} from '../../services/testlogin.service';
 import {HttpClient} from '@angular/common/http';
@@ -13,23 +14,28 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
 
   login: Login;
+  error: boolean;
 
-  constructor(private router: Router, private loginService: LoginService) {}
+  constructor(private router: Router, private loginService: LoginService) {
+    this.error = false;
+  }
 
   ngOnInit() {
     this.login = new Login('', '');
   }
 
   validate() {
+    this.error = false;
 
-
-    //this.router.navigate(['questions']);
-
+    var successResponse: SuccessResponse;
     this.loginService.attemptAuthentication(this.login).subscribe(
       data => {
-        //this.token.saveToken(data.token);
-        //this.router.navigate(['home']);
-        console.log(data);
+        successResponse = new SuccessResponse(data.response);
+        if(successResponse.response) {
+          this.router.navigate(['questions']);
+        } else {
+          this.error = true;
+        }
       }
     );
 

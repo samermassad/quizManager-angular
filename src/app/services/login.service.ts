@@ -1,4 +1,5 @@
 import { Login } from '../datamodel/login';
+import { SuccessResponse } from '../datamodel/successresponse';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -12,10 +13,8 @@ url = 'http://localhost:8080/QuizManager-api/rest/login';
 
     }
 
-  attemptAuthentication(login: Login): Observable<Login> {
-    const credentials = {username: login.username, password: login.password};
-    console.log('attempAuthentication for user ::' + login.username);
-    return this.http.post<Login>(this.url, login);
+  attemptAuthentication(login: Login) {
+    return this.http.post<SuccessResponse>(this.url, login);
   }
 
 
