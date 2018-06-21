@@ -3,17 +3,15 @@
 		<tr>
 			<th scope="col">ID</th>
 			<th scope="col">Title</th>
-			<th scope="col">Difficulty</th>
-			<th scope="col">Tags</th>
+			<th scope="col">Question Type</th>
 			<th scope="col">Actions</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let question of questions">
+		<tr *ngFor="let question of questions; let i = index; trackBy: trackByQuestions">
 			<th scope="row">{{question.id}}</th>
-			<th>{{question.title}}</th>
-			<th>{{question.difficulty}}</th>
-			<th>{{question.tags}}</th>
+			<th>{{question.question}}</th>
+			<th>{{question.type}}</th>
 			<th>
 				<button class="btn btn-lg btn-primary" (click)="edit()">Edit</button>
 				<button class="btn btn-lg btn-primary">Delete</button>

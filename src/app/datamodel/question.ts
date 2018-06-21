@@ -1,17 +1,13 @@
 import {QuestionType} from './questiontype';
 export class Question {
   id: number;
-  title: string;
-  questionType: QuestionType;
-  tags: string[];
-  difficulty: number;
+  question: string;
+  type: QuestionType;
 
 
-  constructor(id: number, title: string, difficulty: number, tags: string[]) {
+  constructor(id: number, question: string, type: QuestionType) {
     this.id = id;
-    this.title = title;
-    // this.questionType = questionType;
-    this.tags = tags;
-    this.difficulty = difficulty;
+    this.question = question;
+    this.type = type;
   }
 }
