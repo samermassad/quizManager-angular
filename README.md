@@ -4,9 +4,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## URLS
 Homepage: `/`
+
 Create a user: `/createLogin?username={user}&password={pass}`
+
 Login: `/login`
+
 List questions (doesn't need login to access): `/questions `
+
 
 ## Development server
 
