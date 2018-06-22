@@ -1,9 +1,9 @@
 export class SuccessResponse {
 
-  response: boolean;
+  success: boolean;
 
-  constructor(response: boolean) {
-    this.response = response;
+  constructor(success: boolean) {
+    this.success = success;
   }
 
 }

@@ -30,8 +30,8 @@ export class LoginComponent implements OnInit {
     var successResponse: SuccessResponse;
     this.loginService.attemptAuthentication(this.login).subscribe(
       data => {
-        successResponse = new SuccessResponse(data.response);
-        if(successResponse.response) {
+        successResponse = new SuccessResponse(data.success);
+        if (successResponse.success) {
           this.router.navigate(['home']);
         } else {
           this.error = true;

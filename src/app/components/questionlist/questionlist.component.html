@@ -13,11 +13,11 @@
 			<th>{{question.question}}</th>
 			<th>{{question.type}}</th>
 			<th>
-				<button class="btn btn-lg btn-primary" (click)="edit()">Edit</button>
-				<button class="btn btn-lg btn-primary">Delete</button>
+				<button class="btn btn-lg btn-primary" [routerLink]="['/edit',question.id]">Edit</button>
+				<button class="btn btn-lg btn-primary" (click)="delete(question.id)">Delete</button>
 			</th>
 		</tr>
 	</tbody>
 </table>
 
-<button>Create a new question</button>
+<button class="btn btn-lg btn-primary">Create a new question</button>

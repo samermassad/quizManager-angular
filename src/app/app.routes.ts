@@ -10,10 +10,9 @@ import {Question} from './datamodel/question';
 
 const appRoutes: Routes = [
   {path: '', component: WelcomePageComponent},
-  {path: 'form', component: QuestionFormComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'questions', component: QuestionlistComponent}
-
+  {path: 'questions', component: QuestionlistComponent},
+  {path: 'edit/:id', component: QuestionFormComponent}
 
 ];
 

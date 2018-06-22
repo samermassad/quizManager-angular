@@ -1,7 +1,9 @@
 import {Question} from '../../datamodel/question';
 import { QuestionType } from '../../datamodel/questiontype';
+import { SuccessResponse } from '../../datamodel/successresponse';
+import { QuestionService } from '../../services/questions.service';
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 
 
 @Component({
@@ -12,13 +14,26 @@ import {Router} from '@angular/router';
 export class QuestionFormComponent implements OnInit {
   question: Question;
 
-  constructor(private router: Router) {}
+  constructor(private questionService: QuestionService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.question = new Question(0, 'test', QuestionType.MCQ);
+    let id = this.route.snapshot.params['id'];
+    this.questionService.getQuestion(id).subscribe(
+      data => {
+          this.question = data;
+      }
+    );
   }
 
   validate() {
-    this.router.navigate(['questions']);
+    var successResponse: SuccessResponse;
+    this.questionService.update(this.question).subscribe(
+      data => {
+        successResponse = new SuccessResponse(data.success);
+        if (successResponse.success) {
+          this.router.navigate(['questions']);
+        }
+      }
+    );
   }
 }
