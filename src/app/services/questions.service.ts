@@ -1,5 +1,6 @@
 import {Question} from '../datamodel/question';
 import { QuestionListResponse } from '../datamodel/questionlistresponse';
+import { QuestionType } from '../datamodel/questiontype';
 import { SuccessResponse } from '../datamodel/successresponse';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
@@ -29,5 +30,10 @@ export class QuestionService {
 
   update(question: Question) {
     return this.http.post<SuccessResponse>(this.url, question);
+  }
+
+  create(question: Question) {
+    question.type = QuestionType.MCQ;
+    return this.http.put<SuccessResponse>(this.url, question);
   }
 }
