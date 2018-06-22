@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       data => {
         successResponse = new SuccessResponse(data.success);
         if (successResponse.success) {
-          this.router.navigate(['home']);
+          this.router.navigate(['questions']);
         } else {
           this.error = true;
         }
